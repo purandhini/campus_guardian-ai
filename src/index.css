@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ──────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #3334a8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4c4df0;
+}
+
+/* ── Utility classes ────────────────────────────────────── */
+@layer components {
+  .card {
+    @apply bg-navy-900/60 border border-navy-800 rounded-xl;
+  }
+  .card-hover {
+    @apply transition-all hover:border-navy-700 hover:bg-navy-900/80;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-critical {
+    @apply badge bg-red-500/15 text-red-400 border border-red-500/30;
+  }
+  .badge-high {
+    @apply badge bg-orange-500/15 text-orange-400 border border-orange-500/30;
+  }
+  .badge-medium {
+    @apply badge bg-yellow-500/15 text-yellow-400 border border-yellow-500/30;
+  }
+  .badge-low {
+    @apply badge bg-blue-500/15 text-blue-400 border border-blue-500/30;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-navy-600 text-white hover:bg-navy-500;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-500;
+  }
+  .btn-ghost {
+    @apply btn text-navy-300 hover:bg-navy-800;
+  }
+  .input-field {
+    @apply w-full bg-navy-950 border border-navy-800 rounded-lg px-4 py-2.5 text-navy-100 placeholder-navy-500 focus:outline-none focus:border-navy-600 transition-colors;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-navy-400 hover:text-navy-100 hover:bg-navy-800/50 transition-all cursor-pointer;
+  }
+  .nav-link-active {
+    @apply text-white bg-navy-700/40 border-l-2 border-navy-500;
+  }
+}
+
+/* ── Severity dot pulse ─────────────────────────────────── */
+.severity-dot {
+  @apply inline-block w-2.5 h-2.5 rounded-full;
+}
+.severity-dot.critical {
+  @apply bg-red-500;
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.severity-dot.high {
+  @apply bg-orange-500;
+}
+.severity-dot.medium {
+  @apply bg-yellow-500;
+}
+.severity-dot.low {
+  @apply bg-blue-500;
+}
+
+/* ── Gradient text ──────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #5b6bf4, #a4b8fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Scanning animation for AI processing ──────────────── */
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #5b6bf4, transparent);
+  animation: scan 2s ease-in-out infinite;
+}
+
+/* ── Glow effect for critical cards ─────────────────────── */
+.glow-critical {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+}
+
+/* ── Hide scrollbar on mobile nav ──────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
